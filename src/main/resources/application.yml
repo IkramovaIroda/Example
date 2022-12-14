@@ -1,0 +1,21 @@
+server:
+  port: 8034
+spring:
+  sql:
+    init:
+      mode: never
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+  datasource:
+    username: postgres
+    password: root
+    url: jdbc:postgresql://localhost:5432/postgres
+    driver-class-name: org.postgresql.Driver
+  data:
+    rest:
+      base-path: /api
+#springdoc:
+#  swagger-ui:
+#    path: /swagger-ui-custom.html
