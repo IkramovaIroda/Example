@@ -36,6 +36,7 @@ dependencies {
     implementation 'net.seesharpsoft.spring:sharping-multipart-boot:0.8.0'
     implementation 'net.seesharpsoft.sharping:sharping-spring-multipart-boot:0.21.0'
     implementation 'com.nitayjoffe.util:java-utils:0.2'
+    implementation 'com.noelherrick.jell:jell:0.1.1'
     annotationProcessor 'com.wizzdi:flexicore-boot-starter-multipart:2.0.0'
 //    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
     compileOnly 'org.projectlombok:lombok'
