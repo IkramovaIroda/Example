@@ -3,12 +3,16 @@ package com.example.ikramova.crud;
 
 import com.example.ikramova.crud.AdminService;
 import lombok.extern.log4j.Log4j2;
+import org.h2.tools.Csv;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.io.FileReader;
+import java.io.InputStream;
+import java.util.Arrays;
 
 @RestController
 @RequestMapping("/admin")
@@ -16,14 +20,11 @@ import java.io.File;
 public class Controller {
 @Autowired
 AdminService adminService;
-    private boolean canRead;
-    @GetMapping("/uploadCsvFile")
-    public Object uploadFile(File file) {
+    @RequestMapping(value = "uploadCsvFile", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public Object uploadFile( @RequestParam("file") MultipartFile file) {
         log.info("<< uploadCsvFile");
         try {
-            String  path="C:\\Users\\Lenovo PC\\IdeaProjects\\IKRAMOVA\\CBBLKUPLD.csv";
-            canRead = file.canRead();
-            return  adminService.uploadCsvFile(path);
+            return  adminService.uploadCsvFile(file);
         } catch (Exception e) {
             log.error("Unexpected error " + e.getMessage(), e);
             return e.getMessage();

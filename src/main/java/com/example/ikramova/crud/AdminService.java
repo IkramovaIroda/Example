@@ -1,12 +1,16 @@
 package com.example.ikramova.crud;
 
+
+import com.opencsv.CSVReader;
+import com.opencsv.CSVReaderBuilder;
+import com.opencsv.exceptions.CsvValidationException;
+import lombok.SneakyThrows;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 @Service
 @Log4j2
@@ -15,40 +19,36 @@ public class AdminService
     @Autowired
     CsvFileRepo csvFileRepo;
     private String[] row;
-    public CsvFile uploadCsvFile(String path){
-        log.info("> uploadCsvFile");
-        String line = "";
-        String splitBy = ",,";
-        CsvFile csvFile = new CsvFile();
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(path));
-//            while ((line = br.readLine()) != null)
-//            {
-//                row=(line.split(splitBy));
-//
-//                log.info("< uploadCsvFile");
-//
-//            }
-            for (int i = 0; i < 3; i++) {
+    public String uploadCsvFile(MultipartFile file)  {
+        log.info(">> uploadCsvFile");
 
-                line = br.readLine();
-                row=(line.split(splitBy));
-               csvFile.setUrefNo(row[0]);
-               csvFile.setBankCode(row[1]);
-               csvFile.setBankName(row[2]);
-               csvFile.setTitle(row[3]);
-               csvFile.setCustType(row[4]);
-               csvFile.setCustUid(row[5]);
-               csvFile.setCustTaxId(row[7]);
-               csvFileRepo.save(csvFile);
+       if(csvFileRepo.findAll()!=null) {
+           csvFileRepo.deleteAll();
+       }
+        Reader reader = null;
+        try {
+            reader = new InputStreamReader(file.getInputStream());
+            CSVReader csvReader = new CSVReaderBuilder(reader).withSkipLines(1).build();
+            String[] lineInArray;
+            while ((lineInArray = csvReader.readNext()) != null) {
+                CsvFileDb csvFile = new CsvFileDb();
+                csvFile.setIndex(lineInArray[0]);
+                csvFile.setEXTREFNO(lineInArray[2]);
+                csvFile.setListName(lineInArray[3]);
+                csvFile.setOrgan(lineInArray[4]);
+                csvFile.setCustName(lineInArray[6]);
+                csvFile.setBankName(lineInArray[8]);
+                csvFile.setCustTaxId(lineInArray[12]);
+                csvFile.setDob(lineInArray[13]);
+                csvFile.setAddress1(lineInArray[14]);
+                csvFile.setBkExpdt(lineInArray[19]);
+                csvFileRepo.save(csvFile);
             }
 
-        } catch (IOException e) {
-            log.info("< uploadCsvFile"+e.getMessage());
-            e.printStackTrace();
+        } catch (IOException | CsvValidationException e) {
+            throw new RuntimeException(e);
         }
-        log.info("< uploadCsvFile");
-         csvFileRepo.deleteAll();
-        return csvFile;
+        log.info("<< uploadCsvFile");
+        return "succes";
     }
 }

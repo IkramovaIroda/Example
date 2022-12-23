@@ -24,7 +24,6 @@ repositories {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: '*.jar')
     // https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml
     implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '3.9'
 
@@ -47,7 +46,6 @@ dependencies {
 // https://mvnrepository.com/artifact/com.opencsv/opencsv
     implementation group: 'com.opencsv', name: 'opencsv', version: '5.7.1'
 // https://mvnrepository.com/artifact/com.opencsv/opencsv
-    implementation group: 'com.opencsv', name: 'opencsv', version: '5.7.1'
 
     implementation group: 'org.apache.poi', name: 'poi', version: '3.9'
     implementation group: 'com.gitlab.cdc-java.util', name: 'cdc-util-core', version: '0.28.1'

@@ -1,10 +1,8 @@
 package com.example.ikramova.crud;
 
 import javax.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
+import lombok.*;
 import org.springframework.stereotype.Indexed;
 
 import javax.persistence.Table;
@@ -16,6 +14,7 @@ import java.util.Date;
 @Getter
 @Setter
 @Table(name = "csv_file")
+@ToString
 public class CsvFile {
     @Id
     @Column(name = "uref_no")
