@@ -20,7 +20,7 @@ import java.util.Arrays;
 public class Controller {
 @Autowired
 AdminService adminService;
-    @RequestMapping(value = "uploadCsvFile", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(value = "uploadCsvFile", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public Object uploadFile( @RequestParam("file") MultipartFile file) {
         log.info("<< uploadCsvFile");
         try {
