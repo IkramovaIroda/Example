@@ -31,7 +31,6 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'com.wizzdi:flexicore-boot-starter-multipart:2.0.0'
     implementation 'net.seesharpsoft.spring:sharping-multipart-boot:0.8.0'
     implementation 'net.seesharpsoft.sharping:sharping-spring-multipart-boot:0.21.0'
 // https://mvnrepository.com/artifact/org.apache.tuscany.sca/tuscany-implementation-java-runtime
@@ -43,22 +42,30 @@ dependencies {
     runtimeOnly 'org.postgresql:postgresql'
     annotationProcessor 'org.projectlombok:lombok'
 
+// https://mvnrepository.com/artifact/com.itextpdf/kernel
+    implementation group: 'com.itextpdf', name: 'kernel', version: '7.2.5'
+// https://mvnrepository.com/artifact/com.itextpdf/layout
+    implementation group: 'com.itextpdf', name: 'layout', version: '7.2.5'
+
+
+
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
 // https://mvnrepository.com/artifact/com.opencsv/opencsv
-    implementation group: 'com.opencsv', name: 'opencsv', version: '5.7.0'
+    implementation group: 'com.opencsv', name: 'opencsv', version: '5.7.1'
 // https://mvnrepository.com/artifact/com.opencsv/opencsv
 // https://mvnrepository.com/artifact/net.sf.opencsv/opencsv
     implementation group: 'net.sf.opencsv', name: 'opencsv', version: '2.3'
-
+// https://mvnrepository.com/artifact/com.itextpdf/itextpdf
+    implementation group: 'com.itextpdf', name: 'itextpdf', version: '5.5.13.3'
+   // implementation 'com.itextpdf:itextpdf:5.5.12'
 // https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml
     implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '5.2.2'
     implementation group: 'com.gitlab.cdc-java.util', name: 'cdc-util-core', version: '0.28.1'
     implementation 'org.apache.poi:poi:4.0.0'
 // https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml
     implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '5.2.2'
-// https://mvnrepository.com/artifact/com.itextpdf/itextpdf
-    implementation group: 'com.itextpdf', name: 'itextpdf', version: '5.5.13.3'
 // https://mvnrepository.com/artifact/org.apache.pdfbox/pdfbox
     implementation group: 'org.apache.pdfbox', name: 'pdfbox', version: '2.0.27'
 

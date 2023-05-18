@@ -18,14 +18,14 @@ public class Adding_Images_to_PDF {
             document.open();
             document.add(new Paragraph("Image Example"));
             //Add Image
-            Image image1 = Image.getInstance("temp.jpg");
-            //Fixed Positioning
-            image1.setAbsolutePosition(100f, 550f);
-            //Scale to new height and new width of image
-            image1.scaleAbsolute(200, 200);
-            //Add to document
-            document.add(image1);
-            String imageUrl = "http://www.eclipse.org/xtend/images/java8_logo.png";
+//            Image image1 = Image.getInstance("temp.jpg");
+//            //Fixed Positioning
+//            image1.setAbsolutePosition(100f, 550f);
+//            //Scale to new height and new width of image
+//            image1.scaleAbsolute(200, 200);
+//            //Add to document
+//            document.add(image1);
+            String imageUrl = "C:/Users/Lenovo PC/IdeaProjects/Example/печать 1.png";
             Image image2 = Image.getInstance(new URL(imageUrl));
             document.add(image2);
             document.close();
